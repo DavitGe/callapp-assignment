@@ -4,10 +4,10 @@ import { User } from "./model/User";
 import { useUserStore } from "./usersStore";
 
 import Table from "./components/Table";
+import Header from "./components/Header";
 
 function App() {
-  const { users, setUsers } = useUserStore((state) => ({
-    users: state.users,
+  const { setUsers } = useUserStore((state) => ({
     setUsers: state.setUsers,
   }));
 
@@ -20,6 +20,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <Table />
     </div>
   );

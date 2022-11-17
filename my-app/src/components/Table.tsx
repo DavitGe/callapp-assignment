@@ -42,7 +42,6 @@ function Table(): JSX.Element {
   console.log(users);
 
   return <DataTable data={users} columns={columns} />;
-  // return <p>Loading</p>;
 }
 
 export default Table;
