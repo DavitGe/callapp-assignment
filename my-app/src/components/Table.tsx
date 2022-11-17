@@ -1,5 +1,8 @@
 import React from "react";
-import DataTable, { TableColumn } from "react-data-table-component";
+import DataTable, {
+  TableColumn,
+  createTheme,
+} from "react-data-table-component";
 
 import { useUserStore } from "../usersStore";
 import { User } from "../model/User";
@@ -38,10 +41,15 @@ const columns: TableColumn<User>[] = [
 ];
 
 function Table(): JSX.Element {
+  createTheme("theme", {
+    background: {
+      default: "transparent",
+    },
+  });
   const users = useUserStore((state) => state.users);
   console.log(users);
 
-  return <DataTable data={users} columns={columns} />;
+  return <DataTable data={users} columns={columns} theme="theme" />;
 }
 
 export default Table;
