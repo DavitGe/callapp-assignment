@@ -2,7 +2,7 @@ import create from "zustand";
 import { User } from "./model/User";
 
 interface UserState {
-  users: User[];
+  users: Array<User>;
   setUsers: (data: User[]) => void;
 }
 
