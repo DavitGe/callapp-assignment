@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { User } from "./model/User";
 import { useUserStore } from "./usersStore";
@@ -9,9 +9,11 @@ function App() {
     setUsers: state.setUsers,
   }));
 
-  fetch("http://localhost:3001/")
-    .then((response) => response.json())
-    .then((data: User[]) => setUsers(data));
+  useEffect(() => {
+    fetch("http://localhost:3001/")
+      .then((response) => response.json())
+      .then((data: User[]) => setUsers(data));
+  }, []);
 
   return (
     <div className="App">
