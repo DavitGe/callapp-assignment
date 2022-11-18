@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useUserStore } from "../usersStore";
-import { User } from "../model/User";
 import Chart from "react-apexcharts";
 
 interface City {
@@ -9,7 +8,6 @@ interface City {
 }
 const CitiesChart = () => {
   const users = useUserStore((state) => state.users);
-  const [cities, setCities] = useState<City[]>([]);
   const [options, setOptions] = useState({
     series: [1],
     labels: ["A"],
@@ -47,7 +45,6 @@ const CitiesChart = () => {
     });
     const tempSeries = tempCities.map((e) => e.value);
     const tempLabels = tempCities.map((e) => e.name);
-    setCities(tempCities);
     setOptions({ ...options, series: tempSeries, labels: tempLabels });
   }, [users]);
 
