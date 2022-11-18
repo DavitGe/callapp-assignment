@@ -260,7 +260,7 @@ const StyledLabel = styled(Label)`
 
 const Button = styled.button`
   width: 100%;
-  background-color: #d04243;
+  background-color: #101010;
   outline: none;
   border: none;
   border-radius: 10px;

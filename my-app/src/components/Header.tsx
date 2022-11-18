@@ -51,7 +51,7 @@ const SubTitle = styled.span`
 `;
 
 const Button = styled.button`
-  background-color: #d04243;
+  background-color: #101010;
   outline: none;
   border: none;
   border-radius: 10px;
