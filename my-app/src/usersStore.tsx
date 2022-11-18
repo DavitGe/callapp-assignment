@@ -5,6 +5,7 @@ interface UserState {
   users: Array<User>;
   setUsers: (data: User[]) => void;
   addUser: (user: User) => void;
+  removeUser: (id: String) => void;
 }
 
 export const useUserStore = create<UserState>((set) => ({
@@ -19,6 +20,11 @@ export const useUserStore = create<UserState>((set) => ({
   addUser: (user: User) => {
     set((state) => ({
       users: [...state.users, user],
+    }));
+  },
+  removeUser: (id: String) => {
+    set((state) => ({
+      users: state.users.filter((user) => user.id !== id),
     }));
   },
 }));
