@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import NewPerson from "./NewPerson";
 
 const Header = (): JSX.Element => {
+  const [modal, setModal] = useState(false);
+
+  const toggle = (): void => setModal(!modal);
+
   return (
-    <HeaderContainer>
-      <TextContainer>
-        <Title>Table Management</Title>
-        <SubTitle>
-          Manage all your existing people statistics or add new people.
-        </SubTitle>
-      </TextContainer>
-      <Button>Add New Person</Button>
-    </HeaderContainer>
+    <div>
+      <NewPerson modal={modal} toggle={toggle} />
+      <HeaderContainer>
+        <TextContainer>
+          <Title>Table Management</Title>
+          <SubTitle>
+            Manage all your existing people statistics or add new people.
+          </SubTitle>
+        </TextContainer>
+        <Button onClick={toggle}>Add New Person</Button>
+      </HeaderContainer>
+    </div>
   );
 };
 

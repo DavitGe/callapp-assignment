@@ -5,9 +5,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
   background-color: #f6f5f2;
+  color: #101010;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+h5 {
+  font-weight: 600;
+  font-size: 1.5rem;
 }

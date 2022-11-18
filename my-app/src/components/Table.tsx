@@ -27,8 +27,8 @@ const columns: TableColumn<User>[] = [
     selector: (row) => row.email,
   },
   {
-    name: "email",
-    selector: (row) => row.email,
+    name: "gender",
+    selector: (row) => row.gender,
   },
   {
     name: "phone",
