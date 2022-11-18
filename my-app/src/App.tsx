@@ -8,8 +8,6 @@ import Table from "./components/Table";
 import Header from "./components/Header";
 import CitiesChart from "./components/CitiesChart";
 
-import "dotenv/config";
-
 function App() {
   const { setUsers } = useUserStore((state) => ({
     setUsers: state.setUsers,
@@ -17,7 +15,7 @@ function App() {
 
   useEffect(() => {
     try {
-      fetch(process.env.URL ? process.env.URL : "")
+      fetch("https://callapp-assignment.vercel.app/")
         .then((response) => response.json())
         .then((data: User[]) => setUsers(data));
     } catch (error) {

@@ -46,6 +46,7 @@ const ChangePerson = ({ modal, toggle, userId }: props): JSX.Element => {
       setStreet(user.address.street);
       setGender(user.gender);
     }
+    //eslint-disable-next-line
   }, [user]);
 
   const [error, setError] = useState({

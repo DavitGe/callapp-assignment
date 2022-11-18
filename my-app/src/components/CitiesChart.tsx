@@ -28,7 +28,7 @@ const CitiesChart = () => {
 
   useEffect(() => {
     var tempCities: City[] = [];
-    users.map((user) => {
+    users.forEach((user) => {
       const city = tempCities.find((e) => e.name === user.address.city);
       if (city) {
         const result = tempCities.map((e) => {
@@ -46,6 +46,7 @@ const CitiesChart = () => {
     const tempSeries = tempCities.map((e) => e.value);
     const tempLabels = tempCities.map((e) => e.name);
     setOptions({ ...options, series: tempSeries, labels: tempLabels });
+    //eslint-disable-next-line
   }, [users]);
 
   return (
