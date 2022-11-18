@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DataTable, {
   TableColumn,
   createTheme,
@@ -7,6 +7,7 @@ import styled from "styled-components";
 
 import { useUserStore } from "../usersStore";
 import { User } from "../model/User";
+import ChangePerson from "./ChangePerson";
 
 function Table(): JSX.Element {
   createTheme("theme", {
@@ -18,7 +19,13 @@ function Table(): JSX.Element {
     users: state.users,
     removeUser: state.removeUser,
   }));
-
+  const [modal, setModal] = useState({ isOpen: false, id: "" });
+  const openModal = (row: User) => {
+    setModal({ id: row.id, isOpen: true });
+  };
+  const closeModal = () => {
+    setModal({ ...modal, isOpen: false });
+  };
   const columns: TableColumn<User>[] = [
     {
       name: "id",
@@ -49,7 +56,27 @@ function Table(): JSX.Element {
     },
   ];
 
-  return <DataTable data={users} columns={columns} theme="theme" />;
+  const onRowClicked = (row: User): void => {
+    openModal(row);
+    console.log("row.id", typeof row.id);
+  };
+
+  return (
+    <div>
+      <ChangePerson
+        modal={modal.isOpen}
+        userId={modal.id}
+        toggle={closeModal}
+      />
+
+      <DataTable
+        data={users}
+        columns={columns}
+        theme="theme"
+        onRowDoubleClicked={onRowClicked}
+      />
+    </div>
+  );
 }
 
 const Button = styled.button`

@@ -2,30 +2,56 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import NewPerson from "./NewPerson";
 
+import { Link } from "react-router-dom";
+
 const Header = (): JSX.Element => {
   const [modal, setModal] = useState(false);
 
   const toggle = (): void => setModal(!modal);
 
   return (
-    <div>
+    <Wrapper>
       <NewPerson modal={modal} toggle={toggle} />
       <HeaderContainer>
         <TextContainer>
-          <Title>Table Management</Title>
+          <Title>Statistic Management</Title>
           <SubTitle>
             Manage all your existing people statistics or add new people.
           </SubTitle>
         </TextContainer>
         <Button onClick={toggle}>Add New Person</Button>
       </HeaderContainer>
-    </div>
+      <LinksContainer>
+        <StyledLink to="/">Table</StyledLink>
+        <StyledLink to="/chart">Pie Chart</StyledLink>
+      </LinksContainer>
+    </Wrapper>
   );
 };
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 12px;
+`;
+const LinksContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: 12px;
+  gap: 24px;
+`;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #d0c2f7;
+  font-size: 24px;
+  font-weight: 600;
+  transition: 0.2s;
+  &:hover {
+    color: #101010;
+  }
+`;
 const HeaderContainer = styled.div`
   max-width: 100%;
-  margin: 0 12px;
   color: #101010;
   display: flex;
   flex-direction: row;

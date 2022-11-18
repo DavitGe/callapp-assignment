@@ -6,6 +6,7 @@ interface UserState {
   setUsers: (data: User[]) => void;
   addUser: (user: User) => void;
   removeUser: (id: String) => void;
+  changeUser: (user: User) => void;
 }
 
 export const useUserStore = create<UserState>((set) => ({
@@ -25,6 +26,17 @@ export const useUserStore = create<UserState>((set) => ({
   removeUser: (id: String) => {
     set((state) => ({
       users: state.users.filter((user) => user.id !== id),
+    }));
+  },
+  changeUser: (user: User) => {
+    set((state) => ({
+      users: state.users.map((temp) => {
+        if (Number(user.id) === Number(temp.id)) {
+          return user;
+        } else {
+          return temp;
+        }
+      }),
     }));
   },
 }));
